@@ -97,6 +97,8 @@ public class PseudoCals : MonoBehaviour {
 			if (drinkCount == 4) {
 				milk2.SetActive (true);
 				milk1.SetActive (false);
+				kiraMilk2.SetActive (true);
+				kiraMilk1.SetActive (false);
 				calNum += 50;
 				drinkCount--;
 			}
@@ -109,12 +111,16 @@ public class PseudoCals : MonoBehaviour {
 			else if (drinkCount == 2) {
 				milk4.SetActive (true);
 				milk3.SetActive (false);
+				kiraMilk4.SetActive (true);
+				kiraMilk3.SetActive (false);
 				calNum += 50;
 				drinkCount--;
 			}
 			else if (drinkCount == 1) {
 				milk5.SetActive (true);
 				milk4.SetActive (false);
+				kiraMilk5.SetActive (true);
+				kiraMilk4.SetActive (false);
 				calNum += 50;
 				drinkCount--;
 			}
