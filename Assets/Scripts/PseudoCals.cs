@@ -59,8 +59,6 @@ public class PseudoCals : MonoBehaviour {
 				Drink ();
 			}
 		}
-
-
 	}
 
 	void Eat () {

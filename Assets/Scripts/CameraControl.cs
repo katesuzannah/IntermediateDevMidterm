@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class CameraControl : MonoBehaviour {
 	float mainAngle;
 	bool setAngle = false;
 	bool turningBack = false;
+	public GameObject bkgdText;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,7 @@ public class CameraControl : MonoBehaviour {
 			transform.localEulerAngles += new Vector3 (.22f, 0f, 0f);
 		}
 		else if (timer>=5f) {
+			bkgdText.SetActive (true);
 			if (setAngle == false) {
 				mainAngle = transform.localEulerAngles.y;
 				setAngle = true;
