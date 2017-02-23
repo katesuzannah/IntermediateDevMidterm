@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MakeBreakfast : MonoBehaviour {
 
@@ -61,21 +62,18 @@ public class MakeBreakfast : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.M)) {
 				PourMilk ();
 			}
-			if (Input.GetKeyDown (KeyCode.Space)) {
+			if (!done && Input.GetKeyDown (KeyCode.Space)) {
 				done = true;
 			}
 			if (done) {
 				if (waffleLeft==0 && milkLeft==0) {
 					message.text = "You matched your sister's food exactly. You avoided a fight this morning.";
 				}
-				else if (waffleLeft>0 || milkLeft>0) {
-					message.text = "You had less than your sister. Your choice led to a fight, ending in your sister digging her nails into your arm and drawing blood.";
+				else {
+					message.text = "You failed to eat the same amount as your sister, so you two fought this morning and were late to school.";
 				}
-				else if (waffleLeft<0 && milkLeft==0) {
-					message.text = "You ate more than your sister. You jog in place when you leave your sister's sight before your humanities class.";
-				}
-				else if (milkLeft<0 && waffleLeft==0) {
-					message.text = "You drank more milk than your sister. You spend the rest of the day feeling ashamed of yourself and sucking in your stomach to hide how fat you feel.";
+				if (Input.GetKeyDown (KeyCode.Space)) {
+					SceneManager.LoadScene ("Lunch");
 				}
 			}
 		}
