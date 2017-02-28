@@ -21,7 +21,7 @@ public class MakeLunch : MonoBehaviour {
 	public GameObject sandwich4;
 
 	GameObject player;
-	PlayerSingleton playerScript;
+	//PlayerSingleton playerScript;
 
 	bool done = false;
 	float endTimer = 0f;
@@ -29,7 +29,7 @@ public class MakeLunch : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Kate");
-		playerScript = player.GetComponent<PlayerSingleton> ();
+		//playerScript = player.GetComponent<PlayerSingleton> ();
 	}
 	
 	// Update is called once per frame
@@ -73,7 +73,7 @@ public class MakeLunch : MonoBehaviour {
 
 	void placeApple () {
 		if (applesLeft > 0) {
-			playerScript.calories += 20;
+			PlayerSingleton.calories += 20;
 			if (applesLeft==3) {
 				apple1.SetActive(true);
 				applesLeft--;
@@ -92,7 +92,7 @@ public class MakeLunch : MonoBehaviour {
 
 	void placeSandwich () {
 		if (sandwichLeft>0) {
-			playerScript.calories += 60;
+			PlayerSingleton.calories += 60;
 			if (sandwichLeft==4) {
 				sandwich1.SetActive (true);
 				sandwichLeft--;

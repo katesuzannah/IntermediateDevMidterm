@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSingleton : MonoBehaviour {
 
 	static PlayerSingleton instance;
-	public int calories;
+	public static int calories;
 	public Text calDisplay;
 	float timer;
 	Scene currentScene;
@@ -16,7 +16,7 @@ public class PlayerSingleton : MonoBehaviour {
 	void Start () {
 		if (instance == null) {
 			instance = this;
-			DontDestroyOnLoad (gameObject);
+			//DontDestroyOnLoad (gameObject);
 		}
 		else {
 			Destroy (gameObject);

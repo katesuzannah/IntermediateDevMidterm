@@ -30,12 +30,12 @@ public class MakeBreakfast : MonoBehaviour {
 	float endTimer = 0f;
 	//bool endTimerStart = false;
 	GameObject player;
-	PlayerSingleton playerScript;
+	//PlayerSingleton playerScript;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Kate");
-		playerScript = player.GetComponent<PlayerSingleton> ();
+		//playerScript = player.GetComponent<PlayerSingleton> ();
 	}
 	
 	// Update is called once per frame
@@ -72,7 +72,7 @@ public class MakeBreakfast : MonoBehaviour {
 	void PortionWaffle () {
 		if (waffleLeft>-4) {
 			
-			playerScript.calories += 50;
+			PlayerSingleton.calories += 50;
 
 			if (waffleLeft==4) {
 				waffleLeft--;
@@ -112,7 +112,7 @@ public class MakeBreakfast : MonoBehaviour {
 	void PourMilk () {
 		if (milkLeft>0) {
 
-			playerScript.calories += 20;
+			PlayerSingleton.calories += 20;
 
 			if (milkLeft == 4) {
 				milk4.SetActive (true);
