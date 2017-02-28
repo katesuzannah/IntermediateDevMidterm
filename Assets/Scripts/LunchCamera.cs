@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CameraControl : MonoBehaviour {
+public class LunchCamera : MonoBehaviour {
 
 	float timer=0f;
 	//float mainAngleY;
@@ -20,7 +19,7 @@ public class CameraControl : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 		if (timer>3f && timer<5f) {
-			transform.position += new Vector3 (-.03f, -.005f, .003f);
+			transform.position += new Vector3 (-.026f, -.0025f, .004f);
 			transform.localEulerAngles += new Vector3 (.2f, 0f, 0f);
 		}
 		else if (timer>=5f) {
@@ -35,9 +34,9 @@ public class CameraControl : MonoBehaviour {
 				if (transform.localEulerAngles.y>mainAngle.y-30f) {
 					transform.localEulerAngles -= new Vector3 (0f, 2f, 0f);
 				}
-//				if (transform.localEulerAngles.z>mainAngle.z-2f) {
-//					transform.localEulerAngles -= new Vector3 (0f, 0f, 1f);
-//				}
+				//				if (transform.localEulerAngles.z>mainAngle.z-2f) {
+				//					transform.localEulerAngles -= new Vector3 (0f, 0f, 1f);
+				//				}
 			}
 			else if (Input.GetKeyUp(KeyCode.L)) {
 				turningBack = true;

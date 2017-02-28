@@ -17,35 +17,25 @@ public class MakeBreakfast : MonoBehaviour {
 	public GameObject waffleQ7;
 	public GameObject waffleQ8;
 
-	/*
-	public GameObject kiraWaffleQ1;
-	public GameObject kiraWaffleQ2;
-	public GameObject kiraWaffleQ3;
-	public GameObject kiraWaffleQ4;
-	*/
-
 	public GameObject milk1;
 	public GameObject milk2;
 	public GameObject milk3;
 	public GameObject milk4;
 	public GameObject milk5;
 
-	/*
-	public GameObject kiraMilk1;
-	public GameObject kiraMilk2;
-	public GameObject kiraMilk3;
-	public GameObject kiraMilk4;
-	public GameObject kiraMilk5;
-	*/
-
 	int waffleLeft = 4;
 	int milkLeft = 4;
 	float timer = 0;
 	bool done = false;
+	float endTimer = 0f;
+	//bool endTimerStart = false;
+	GameObject player;
+	PlayerSingleton playerScript;
 
 	// Use this for initialization
 	void Start () {
-		
+		player = GameObject.Find ("Kate");
+		playerScript = player.GetComponent<PlayerSingleton> ();
 	}
 	
 	// Update is called once per frame
@@ -66,13 +56,14 @@ public class MakeBreakfast : MonoBehaviour {
 				done = true;
 			}
 			if (done) {
+				endTimer += Time.deltaTime;
 				if (waffleLeft==0 && milkLeft==0) {
 					message.text = "You matched your sister's food exactly. You avoided a fight this morning.";
 				}
 				else {
 					message.text = "You failed to eat the same amount as your sister, so you two fought this morning and were late to school.";
 				}
-				if (Input.GetKeyDown (KeyCode.Space)) {
+				if (endTimer>5f) {
 					SceneManager.LoadScene ("Lunch");
 				}
 			}
@@ -80,9 +71,13 @@ public class MakeBreakfast : MonoBehaviour {
 	}
 	void PortionWaffle () {
 		if (waffleLeft>-4) {
+			
+			playerScript.calories += 50;
+
 			if (waffleLeft==4) {
 				waffleLeft--;
 				waffleQ1.SetActive (true);
+
 			}
 			else if (waffleLeft==3) {
 				waffleLeft--;
@@ -112,13 +107,13 @@ public class MakeBreakfast : MonoBehaviour {
 				waffleLeft--;
 				waffleQ8.SetActive (true);
 			}
-			else {
-				//error message that tells the player they can't put more on their plate
-			}
 		}
 	}
 	void PourMilk () {
 		if (milkLeft>0) {
+
+			playerScript.calories += 20;
+
 			if (milkLeft == 4) {
 				milk4.SetActive (true);
 				milk5.SetActive (false);
@@ -138,9 +133,6 @@ public class MakeBreakfast : MonoBehaviour {
 				milk1.SetActive (true);
 				milk2.SetActive (false);
 				milkLeft--;
-			}
-			else {
-				//error message telling player they can't pour more milk
 			}
 		}
 	}
