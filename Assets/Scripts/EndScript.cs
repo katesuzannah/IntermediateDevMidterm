@@ -18,7 +18,7 @@ public class EndScript : MonoBehaviour {
 
 	GameObject clickedObject;
 
-	Vector3 mousePosition;
+	Vector3 mousePos;
 	float mouseX;
 	float mouseY;
 
@@ -30,9 +30,10 @@ public class EndScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		mouseX = mousePosition.x;
-		mouseY = mousePosition.y;
+	//	mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		//mouseX = mousePos.x;
+		//mouseY = mousePos.y;
+
 
 		/*
 		 * ASK ROBERT TOMORROW ABOUT THE RAYCAST DIRECTION/ENDPOINT
@@ -40,16 +41,16 @@ public class EndScript : MonoBehaviour {
 		 */
 
 		// 1. Construct a "Ray" based on the way the camera is looking
-		Ray ray = new Ray(mousePosition, Camera.main.transform.forward);
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 		// 2. Reserve some space in memory to remember what we hit
 		RaycastHit rayHit = new RaycastHit(); // This is just a blank variable right now
 
 		// 2b. Visualize the ray in debug scene view
-		Debug.DrawRay(ray.origin, ray.direction * 5f, Color.green);
+		Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green);
 
 		// 3. Shoot our raycast, 5f being the length of the ray
-		if (Physics.Raycast(ray, out rayHit, 5f, myRaycastMask)) {
+		if (Physics.Raycast(ray, out rayHit, 100f, myRaycastMask)) {
 			// 4. Did player click?
 			if (Input.GetMouseButtonDown(0)) {
 				clickedObject = rayHit.collider.gameObject;
