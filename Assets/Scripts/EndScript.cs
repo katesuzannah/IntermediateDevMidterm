@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndScript : MonoBehaviour {
 
@@ -14,32 +15,23 @@ public class EndScript : MonoBehaviour {
 	public GameObject pos3;
 	public GameObject pos4;
 
+	bool pos1On = false;
+	bool pos2On = false;
+	bool pos3On = false;
+	bool pos4On = false;
+
 	public LayerMask myRaycastMask;
 
 	GameObject clickedObject;
 
-	Vector3 mousePos;
-	float mouseX;
-	float mouseY;
+	float endTimer = 0f;
 
-	// Use this for initialization
-	void Start () {
+	public Text screenText;
+	public GameObject finalMessage;
 		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		
-	//	mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		//mouseX = mousePos.x;
-		//mouseY = mousePos.y;
-
-
-		/*
-		 * ASK ROBERT TOMORROW ABOUT THE RAYCAST DIRECTION/ENDPOINT
-		 *
-		 */
-
 		// 1. Construct a "Ray" based on the way the camera is looking
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
@@ -47,7 +39,7 @@ public class EndScript : MonoBehaviour {
 		RaycastHit rayHit = new RaycastHit(); // This is just a blank variable right now
 
 		// 2b. Visualize the ray in debug scene view
-		Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green);
+		//Debug.DrawRay(ray.origin, ray.direction * 100f, Color.green);
 
 		// 3. Shoot our raycast, 5f being the length of the ray
 		if (Physics.Raycast(ray, out rayHit, 100f, myRaycastMask)) {
@@ -58,18 +50,33 @@ public class EndScript : MonoBehaviour {
 					clickedObject.SetActive (false);
 					if (clickedObject == neg1) {
 						pos1.SetActive (true);
+						pos1On = true;
 					}
 					else if (clickedObject == neg2) {
 						pos2.SetActive (true);
+						pos2On = true;
 					}
 					else if (clickedObject == neg3) {
 						pos3.SetActive (true);
+						pos3On = true;
 					}
 					else if (clickedObject == neg4) {
 						pos4.SetActive (true);
+						pos4On = true;
 					}
 				}
 			}
+		}
+		if (pos1On && pos2On && pos3On && pos4On) {
+			endTimer += Time.deltaTime;
+		}
+		if (endTimer > 5f) {
+			pos1.SetActive (false);
+			pos2.SetActive (false);
+			pos3.SetActive (false);
+			pos4.SetActive (false);
+			screenText.text = "";
+			finalMessage.SetActive (true);
 		}
 	}
 }
