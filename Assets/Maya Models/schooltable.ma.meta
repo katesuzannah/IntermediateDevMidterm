@@ -85,6 +85,7 @@ ModelImporter:
     2300030: pCube4
     2300032: pCube5
     2300034: pPyramid1
+    2300036: //RootNode
     3300000: pasted__pasted__pasted__pCube4
     3300002: pasted__pasted__pCube4
     3300004: pasted__pasted__pCube4 1
@@ -103,6 +104,7 @@ ModelImporter:
     3300030: pCube4
     3300032: pCube5
     3300034: pPyramid1
+    3300036: //RootNode
     4300000: pCube1
     4300002: pCube2
     4300004: pPyramid1

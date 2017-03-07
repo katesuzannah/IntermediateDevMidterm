@@ -57,7 +57,7 @@ public class MakeLunch : MonoBehaviour {
 				message.text = "You matched your sister's food exactly. You made it through another school lunch.";
 			}
 			else if (applesLeft < 1 && sandwichLeft < 1) {
-				message.text = "You ate more than your sister, so you two made sure never to stop moving in your P.E. class next period.";
+				message.text = "You ate more than your sister, so you made sure never to stop moving in your P.E. class next period.";
 			}
 			else if (applesLeft > 1 && sandwichLeft >1) {
 				message.text = "You ate less than your sister, even though you know it will make her feel like the fat twin.";
