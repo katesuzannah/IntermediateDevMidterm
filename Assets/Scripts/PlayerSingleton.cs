@@ -31,7 +31,7 @@ public class PlayerSingleton : MonoBehaviour {
 			if (timer < 5f) {
 				calDisplay.text = "";
 			}
-			else if (timer >= 5f) {
+			else if (timer >= 5f && calories>0f) {
 				calDisplay.text = calories + " Calories";	
 			}
 		}

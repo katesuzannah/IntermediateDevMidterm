@@ -20,7 +20,7 @@ public class MakeLunch : MonoBehaviour {
 	public GameObject sandwich3;
 	public GameObject sandwich4;
 
-	GameObject player;
+//	GameObject player;
 	//PlayerSingleton playerScript;
 
 	bool done = false;
@@ -28,7 +28,7 @@ public class MakeLunch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Kate");
+		//player = GameObject.Find ("Kate");
 		//playerScript = player.GetComponent<PlayerSingleton> ();
 	}
 	
@@ -39,7 +39,11 @@ public class MakeLunch : MonoBehaviour {
 			message.text = "";
 		}
 		else if (timer > 5f) {
-			message.text = "Match your twin's food exactly.\nPress A to put an apple slice on your plate\nPress S to put a quarter of a sandwich in your box\nPress L to look at your sister\nPress SPACE when you are satisfied with your creation.";
+			message.text = "Match your twin's food exactly." +
+				"\nPress A to put an apple slice on your plate" +
+				"\nPress S to put a quarter of a sandwich in your box" +
+				"\nHold L to look at your sister" +
+				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.A)) {
 				placeApple ();
 			}
@@ -60,7 +64,8 @@ public class MakeLunch : MonoBehaviour {
 				message.text = "You ate more than your sister, so you made sure never to stop moving in your P.E. class next period.";
 			}
 			else if (applesLeft > 1 && sandwichLeft >1) {
-				message.text = "You ate less than your sister, even though you know it will make her feel like the fat twin.";
+				SceneManager.LoadScene ("badending");
+				//message.text = "You ate less than your sister, even though you know it will make her feel like the fat twin.";
 			}
 			else {
 				message.text = "You couldn't tell if you or your sister ate more, so you assume you did and proceed to feel fat the rest of the school day.";

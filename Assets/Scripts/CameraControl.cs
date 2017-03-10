@@ -11,7 +11,8 @@ public class CameraControl : MonoBehaviour {
 	Vector3 mainAngle;
 	bool setAngle = false;
 	bool turningBack = false;
-	public GameObject bkgdText;
+	public GameObject textBkgdImg;
+//	public GameObject calBkgdImg;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,10 @@ public class CameraControl : MonoBehaviour {
 			transform.localEulerAngles += new Vector3 (10f, 0f, 0f) * Time.deltaTime;
 		}
 		else if (timer>=5f) {
-			bkgdText.SetActive (true);
+			textBkgdImg.SetActive (true);
+//			if (PlayerSingleton.calories>0f) {
+//				calBkgdImg.SetActive (true);
+//			}
 			if (setAngle == false) {
 				//mainAngleY = transform.localEulerAngles.y;
 				mainAngle = transform.localEulerAngles;

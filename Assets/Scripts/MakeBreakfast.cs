@@ -29,12 +29,12 @@ public class MakeBreakfast : MonoBehaviour {
 	bool done = false;
 	float endTimer = 0f;
 	//bool endTimerStart = false;
-	GameObject player;
+	//GameObject player;
 	//PlayerSingleton playerScript;
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Kate");
+		//player = GameObject.Find ("Kate");
 		//playerScript = player.GetComponent<PlayerSingleton> ();
 	}
 	
@@ -45,7 +45,11 @@ public class MakeBreakfast : MonoBehaviour {
 			message.text = "";
 		}
 		else if (timer>5f) {
-			message.text = "Match your twin's food exactly.\nPress W to put a waffle quarter on your plate\nPress M to pour milk\nPress L to look at your sister\nPress SPACE when you are satisfied with your creation.";
+			message.text = "Match your twin's food exactly." +
+				"\nPress W to put a waffle quarter on your plate" +
+				"\nPress M to pour milk" +
+				"\nHold L to look at your sister" +
+				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.W)) {
 				PortionWaffle ();
 			}
