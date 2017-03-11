@@ -28,15 +28,7 @@ public class MakeBreakfast : MonoBehaviour {
 	float timer = 0;
 	bool done = false;
 	float endTimer = 0f;
-	//bool endTimerStart = false;
-	//GameObject player;
-	//PlayerSingleton playerScript;
 
-	// Use this for initialization
-	void Start () {
-		//player = GameObject.Find ("Kate");
-		//playerScript = player.GetComponent<PlayerSingleton> ();
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -47,36 +39,39 @@ public class MakeBreakfast : MonoBehaviour {
 		else if (timer>5f) {
 			message.text = "Match your twin's food exactly." +
 				"\nPress W to put a waffle quarter on your plate" +
-				"\nPress M to pour milk" +
+				"\nHold M to pour milk" +
 				"\nHold L to look at your sister" +
 				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.W)) {
 				PortionWaffle ();
 			}
 			if (Input.GetKeyDown (KeyCode.M)) {
-				PourMilk ();
+				//PourMilk ();
 			}
 			if (!done && Input.GetKeyDown (KeyCode.Space)) {
 				done = true;
 			}
 			if (done) {
-				endTimer += Time.deltaTime;
-				if (waffleLeft==0 && milkLeft==0) {
+				if (waffleLeft==0
+					&& FillMilk.scale.y > FillMilk.milkMin.y
+					&& FillMilk.scale.y < FillMilk.milkMax.y) {
+					endTimer += Time.deltaTime;
 					message.text = "You matched your sister's food exactly. You avoided a fight this morning.";
+					if (endTimer>4f) {
+						SceneManager.LoadScene ("Lunch");
+					}
 				}
 				else {
-					message.text = "You failed to eat the same amount as your sister, so you two fought this morning and were late to school.";
+					SceneManager.LoadScene ("badending");
 				}
-				if (endTimer>5f) {
-					SceneManager.LoadScene ("Lunch");
-				}
+
 			}
 		}
 	}
 	void PortionWaffle () {
 		if (waffleLeft>-4) {
 			
-			PlayerSingleton.calories += 50;
+			PlayerSingleton.calories += 50f;
 
 			if (waffleLeft==4) {
 				waffleLeft--;
@@ -113,6 +108,7 @@ public class MakeBreakfast : MonoBehaviour {
 			}
 		}
 	}
+	/*
 	void PourMilk () {
 		if (milkLeft>0) {
 
@@ -140,4 +136,5 @@ public class MakeBreakfast : MonoBehaviour {
 			}
 		}
 	}
+	*/
 }

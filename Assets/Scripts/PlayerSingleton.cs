@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSingleton : MonoBehaviour {
 
 	static PlayerSingleton instance;
-	public static int calories;
+	public static float calories;
 	public Text calDisplay;
 	float timer;
 	Scene currentScene;
@@ -32,7 +32,7 @@ public class PlayerSingleton : MonoBehaviour {
 				calDisplay.text = "";
 			}
 			else if (timer >= 5f && calories>0f) {
-				calDisplay.text = calories + " Calories";	
+				calDisplay.text = (int)calories + " Calories";	
 			}
 		}
 	}

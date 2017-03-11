@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour {
 
-	float timer=0f;
+	public static float timer=0f;
 	//float mainAngleY;
 	Vector3 mainAngle;
 	bool setAngle = false;
@@ -27,9 +27,6 @@ public class CameraControl : MonoBehaviour {
 		}
 		else if (timer>=5f) {
 			textBkgdImg.SetActive (true);
-//			if (PlayerSingleton.calories>0f) {
-//				calBkgdImg.SetActive (true);
-//			}
 			if (setAngle == false) {
 				//mainAngleY = transform.localEulerAngles.y;
 				mainAngle = transform.localEulerAngles;

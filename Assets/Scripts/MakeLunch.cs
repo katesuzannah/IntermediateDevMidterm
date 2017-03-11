@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class MakeLunch : MonoBehaviour {
 
 	public Text message;
-	float timer = 0f;
 
 	int applesLeft = 3;
 	public GameObject apple1;
@@ -34,11 +33,11 @@ public class MakeLunch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
-		if (timer <= 5f) {
+		CameraControl.timer += Time.deltaTime;
+		if (CameraControl.timer <= 5f) {
 			message.text = "";
 		}
-		else if (timer > 5f) {
+		else if (CameraControl.timer > 5f) {
 			message.text = "Match your twin's food exactly." +
 				"\nPress A to put an apple slice on your plate" +
 				"\nPress S to put a quarter of a sandwich in your box" +
@@ -56,29 +55,22 @@ public class MakeLunch : MonoBehaviour {
 			done = true;
 		}
 		if (done) {
-			endTimer += Time.deltaTime;
 			if (applesLeft == 1 && sandwichLeft == 1) {
+				endTimer += Time.deltaTime;
 				message.text = "You matched your sister's food exactly. You made it through another school lunch.";
-			}
-			else if (applesLeft < 1 && sandwichLeft < 1) {
-				message.text = "You ate more than your sister, so you made sure never to stop moving in your P.E. class next period.";
-			}
-			else if (applesLeft > 1 && sandwichLeft >1) {
-				SceneManager.LoadScene ("badending");
-				//message.text = "You ate less than your sister, even though you know it will make her feel like the fat twin.";
+				if (endTimer>5f) {
+					SceneManager.LoadScene ("End");
+				}
 			}
 			else {
-				message.text = "You couldn't tell if you or your sister ate more, so you assume you did and proceed to feel fat the rest of the school day.";
-			}
-			if (endTimer>5f) {
-				SceneManager.LoadScene ("End");
+				SceneManager.LoadScene ("badending");
 			}
 		}
 	}
 
 	void placeApple () {
 		if (applesLeft > 0) {
-			PlayerSingleton.calories += 20;
+			PlayerSingleton.calories += 20f;
 			if (applesLeft==3) {
 				apple1.SetActive(true);
 				applesLeft--;
@@ -97,7 +89,7 @@ public class MakeLunch : MonoBehaviour {
 
 	void placeSandwich () {
 		if (sandwichLeft>0) {
-			PlayerSingleton.calories += 60;
+			PlayerSingleton.calories += 60f;
 			if (sandwichLeft==4) {
 				sandwich1.SetActive (true);
 				sandwichLeft--;
