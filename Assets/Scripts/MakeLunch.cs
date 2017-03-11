@@ -19,17 +19,10 @@ public class MakeLunch : MonoBehaviour {
 	public GameObject sandwich3;
 	public GameObject sandwich4;
 
-//	GameObject player;
-	//PlayerSingleton playerScript;
 
 	bool done = false;
 	float endTimer = 0f;
 
-	// Use this for initialization
-	void Start () {
-		//player = GameObject.Find ("Kate");
-		//playerScript = player.GetComponent<PlayerSingleton> ();
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -59,7 +52,7 @@ public class MakeLunch : MonoBehaviour {
 				endTimer += Time.deltaTime;
 				message.text = "You matched your sister's food exactly. You made it through another school lunch.";
 				if (endTimer>5f) {
-					SceneManager.LoadScene ("End");
+					SceneManager.LoadScene ("Dinner");
 				}
 			}
 			else {
