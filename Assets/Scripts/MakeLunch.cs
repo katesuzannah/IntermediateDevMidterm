@@ -22,19 +22,18 @@ public class MakeLunch : MonoBehaviour {
 
 	bool done = false;
 	float endTimer = 0f;
-
 	
 	// Update is called once per frame
 	void Update () {
-		CameraControl.timer += Time.deltaTime;
-		if (CameraControl.timer <= 5f) {
+		//CameraControl.timer += Time.deltaTime;
+		if (PlayerSingleton.PlayerTimer <= 5f) {
 			message.text = "";
 		}
-		else if (CameraControl.timer > 5f) {
+		else if (PlayerSingleton.PlayerTimer > 5f) {
 			message.text = "Match your twin's food exactly." +
-				"\nPress A to put an apple slice on your plate" +
-				"\nPress S to put a quarter of a sandwich in your box" +
-				"\nHold L to look at your sister" +
+				"\nPress A to put an apple slice on your plate." +
+				"\nPress S to put a quarter of a sandwich in your box." +
+				"\nHold L to look at your sister, but don't look too long." +
 				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.A)) {
 				placeApple ();

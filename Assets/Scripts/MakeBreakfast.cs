@@ -11,42 +11,34 @@ public class MakeBreakfast : MonoBehaviour {
 	public GameObject waffleQ2;
 	public GameObject waffleQ3;
 	public GameObject waffleQ4;
-
 	public GameObject waffleQ5;
 	public GameObject waffleQ6;
 	public GameObject waffleQ7;
 	public GameObject waffleQ8;
 
-	public GameObject milk1;
-	public GameObject milk2;
-	public GameObject milk3;
-	public GameObject milk4;
-	public GameObject milk5;
-
 	int waffleLeft = 4;
-	int milkLeft = 4;
-	float timer = 0;
+	//float timer = 0f;
 	bool done = false;
 	float endTimer = 0f;
 
+	void Start () {
+		PlayerSingleton.calories = 0f;
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
-		if (timer<=5f) {
+		//timer += Time.deltaTime;
+		if (PlayerSingleton.PlayerTimer<=5f) {
 			message.text = "";
 		}
-		else if (timer>5f) {
+		else if (PlayerSingleton.PlayerTimer>5f) {
 			message.text = "Match your twin's food exactly." +
-				"\nPress W to put a waffle quarter on your plate" +
-				"\nHold M to pour milk" +
-				"\nHold L to look at your sister" +
+				"\nPress W to put a waffle quarter on your plate." +
+				"\nHold M to pour milk." +
+				"\nHold L to look at your sister, but don't look too long." +
 				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.W)) {
 				PortionWaffle ();
-			}
-			if (Input.GetKeyDown (KeyCode.M)) {
-				//PourMilk ();
 			}
 			if (!done && Input.GetKeyDown (KeyCode.Space)) {
 				done = true;
@@ -64,7 +56,6 @@ public class MakeBreakfast : MonoBehaviour {
 				else {
 					SceneManager.LoadScene ("badending");
 				}
-
 			}
 		}
 	}
@@ -108,33 +99,4 @@ public class MakeBreakfast : MonoBehaviour {
 			}
 		}
 	}
-	/*
-	void PourMilk () {
-		if (milkLeft>0) {
-
-			PlayerSingleton.calories += 20;
-
-			if (milkLeft == 4) {
-				milk4.SetActive (true);
-				milk5.SetActive (false);
-				milkLeft--;
-			}
-			else if (milkLeft == 3) {
-				milk3.SetActive (true);
-				milk4.SetActive (false);
-				milkLeft--;
-			}
-			else if (milkLeft == 2) {
-				milk2.SetActive (true);
-				milk3.SetActive (false);
-				milkLeft--;
-			}
-			else if (milkLeft == 1) {
-				milk1.SetActive (true);
-				milk2.SetActive (false);
-				milkLeft--;
-			}
-		}
-	}
-	*/
 }

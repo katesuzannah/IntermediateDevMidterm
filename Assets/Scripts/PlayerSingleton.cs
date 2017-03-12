@@ -9,11 +9,12 @@ public class PlayerSingleton : MonoBehaviour {
 	static PlayerSingleton instance;
 	public static float calories;
 	public Text calDisplay;
-	float timer;
+	public static float PlayerTimer;
 	Scene currentScene;
 
 	// Use this for initialization
 	void Start () {
+		PlayerTimer = 0f;
 		if (instance == null) {
 			instance = this;
 			//DontDestroyOnLoad (gameObject);
@@ -27,11 +28,11 @@ public class PlayerSingleton : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentScene.name != "End") {
-			timer += Time.deltaTime;
-			if (timer < 5f) {
+			PlayerTimer += Time.deltaTime;
+			if (PlayerTimer < 5f) {
 				calDisplay.text = "";
 			}
-			else if (timer >= 5f && calories>0f) {
+			else if (PlayerTimer >= 5f && calories>0f) {
 				calDisplay.text = (int)calories + " Calories";	
 			}
 		}

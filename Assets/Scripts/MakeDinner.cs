@@ -20,15 +20,14 @@ public class MakeDinner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		CameraControl.timer += Time.deltaTime;
-		if (CameraControl.timer <= 5f) {
+		if (PlayerSingleton.PlayerTimer <= 5f) {
 			message.text = "";
 		}
-		else if (CameraControl.timer > 5f) {
+		else if (PlayerSingleton.PlayerTimer > 5f) {
 			message.text = "Match your twin's food exactly." +
-				"\nPress A to put an apple slice on your plate" +
-				"\nPress S to put a quarter of a sandwich in your box" +
-				"\nHold L to look at your sister" +
+				"\nPress A to put an apple slice on your plate." +
+				"\nPress S to put a quarter of a sandwich in your box." +
+				"\nHold L to look at your sister, but don't look too long." +
 				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.S)) {
 				placeSteak ();
@@ -40,7 +39,9 @@ public class MakeDinner : MonoBehaviour {
 		if (done) {
 			if (steakLeft == 2
 				&& FillMilk.scale.y > FillMilk.milkMin.y
-				&& FillMilk.scale.y < FillMilk.milkMax.y) {
+				&& FillMilk.scale.y < FillMilk.milkMax.y
+				&& CauliflowerScript.scale.x > CauliflowerScript.caulMin.x
+				&& CauliflowerScript.scale.x < CauliflowerScript.caulMax.x) {
 				//start the end timer and display the win text
 				endTimer += Time.deltaTime;
 				message.text = "You matched your sister's food exactly. You made it through another family dinner.";
@@ -55,7 +56,25 @@ public class MakeDinner : MonoBehaviour {
 	}
 
 	void placeSteak () {
-		
+		if (steakLeft>0) {
+			PlayerSingleton.calories += 80f;
+			if (steakLeft==4) {
+				steak1.SetActive (true);
+				steakLeft--;
+			}
+			else if (steakLeft==3) {
+				steak2.SetActive (true);
+				steakLeft--;
+			}
+			else if (steakLeft==2) {
+				steak3.SetActive (true);
+				steakLeft--;
+			}
+			else if (steakLeft==1) {
+				steak4.SetActive (true);
+				steakLeft--;
+			}
+		}
 	}
 
 }
