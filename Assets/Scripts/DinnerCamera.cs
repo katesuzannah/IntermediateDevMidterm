@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class DinnerCamera : MonoBehaviour {
 
-	//public static float dinnerTimer = 0f;
 	Vector3 mainAngle;
 	bool setAngle = false;
 	bool turningBack = false;
@@ -23,7 +22,6 @@ public class DinnerCamera : MonoBehaviour {
 		if (lookTimer>1f) {
 			SceneManager.LoadScene ("badending");
 		}
-		//dinnerTimer += Time.deltaTime;
 		if (PlayerSingleton.PlayerTimer>3f && PlayerSingleton.PlayerTimer<5f) {
 			transform.position += new Vector3 (.1f, -.15f, -1.4f) * Time.deltaTime;
 			transform.localEulerAngles += new Vector3 (23f, 0f, 0f) * Time.deltaTime;
@@ -34,7 +32,7 @@ public class DinnerCamera : MonoBehaviour {
 				mainAngle = transform.localEulerAngles;
 				setAngle = true;
 			}
-			if (Input.GetKey(KeyCode.L) && !turningBack) {
+			if (Input.GetKey(KeyCode.L)) { //&& !turningBack) {
 				lookTimer += Time.deltaTime;
 				lookTimerDisplay.text = lookTimer.ToString();
 				float newAngleX = Mathf.LerpAngle (transform.localEulerAngles.x, maxAngle.x, Time.deltaTime);
@@ -44,10 +42,10 @@ public class DinnerCamera : MonoBehaviour {
 			}
 			else if (Input.GetKeyUp(KeyCode.L)) {
 				turningBack = true;
-			}
-			if (turningBack) {
 				lookTimer = 0f;
 				lookTimerDisplay.text = "";
+			}
+			if (turningBack) {
 				float newAngleX = Mathf.LerpAngle (transform.localEulerAngles.x, mainAngle.x, Time.deltaTime);
 				float newAngleY = Mathf.LerpAngle (transform.localEulerAngles.y, mainAngle.y, Time.deltaTime);
 				float newAngleZ = Mathf.LerpAngle (transform.localEulerAngles.z, mainAngle.z, Time.deltaTime);
