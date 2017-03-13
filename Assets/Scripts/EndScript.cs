@@ -28,6 +28,7 @@ public class EndScript : MonoBehaviour {
 
 	public Text screenText;
 	public GameObject finalMessage;
+
 		
 	// Update is called once per frame
 	void Update () {

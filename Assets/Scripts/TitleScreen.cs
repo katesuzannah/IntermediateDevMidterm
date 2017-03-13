@@ -12,10 +12,13 @@ public class TitleScreen : MonoBehaviour {
 	public Text titleWords;
 	float timer = 0f;
 	bool pressedSpace = false;
+	public AudioSource background;
+
 
 	// Use this for initialization
 	void Start () {
-		
+		background = GetComponent<AudioSource> ();
+		background.Play ();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +31,7 @@ public class TitleScreen : MonoBehaviour {
 			continueWords.gameObject.SetActive (false);
 		}
 		if (pressedSpace == true) {
+			background.Stop ();
 			timer += Time.deltaTime;
 			if (timer>1f) {
 				titleWords.gameObject.SetActive (true);
