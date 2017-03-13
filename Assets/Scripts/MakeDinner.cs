@@ -25,8 +25,9 @@ public class MakeDinner : MonoBehaviour {
 		}
 		else if (PlayerSingleton.PlayerTimer > 5f) {
 			message.text = "Match your twin's food exactly." +
-				"\nPress A to put an apple slice on your plate." +
-				"\nPress S to put a quarter of a sandwich in your box." +
+				"\nPress S to put a piece of steak on your plate." +
+				"\nHold M to pour milk." +
+				"\nHold C to put some mashed cauliflower on your plate." +
 				"\nHold L to look at your sister, but don't look too long." +
 				"\nPress SPACE when you are satisfied with your creation.";
 			if (Input.GetKeyDown (KeyCode.S)) {
