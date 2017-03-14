@@ -23,6 +23,8 @@ public class MakeBreakfast : MonoBehaviour {
 
 	void Start () {
 		PlayerSingleton.calories = 0f;
+		EndFeedback.feedback.Clear ();
+		EndFeedback.feedbackString = "";
 	}
 	
 	// Update is called once per frame
@@ -54,6 +56,18 @@ public class MakeBreakfast : MonoBehaviour {
 					}
 				}
 				else {
+					if (FillMilk.scale.y < FillMilk.milkMin.y) {
+						EndFeedback.feedback.Add ("You poured yourself less milk than your sister had.\n");
+					}
+					if (FillMilk.scale.y > FillMilk.milkMax.y) {
+						EndFeedback.feedback.Add ("You poured yourself too much milk.\n");
+					}
+					if (waffleLeft > 0) {
+						EndFeedback.feedback.Add ("You ate less of your waffle than your sister.");
+					}
+					if (waffleLeft < 0) {
+						EndFeedback.feedback.Add ("You ate more waffles than your sister.");
+					}
 					SceneManager.LoadScene ("badending");
 				}
 			}

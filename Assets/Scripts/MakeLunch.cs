@@ -55,6 +55,18 @@ public class MakeLunch : MonoBehaviour {
 				}
 			}
 			else {
+				if (applesLeft > 1) {
+					EndFeedback.feedback.Add ("You had fewer apple slices than your sister.");
+				}
+				if (applesLeft < 1) {
+					EndFeedback.feedback.Add ("You had more apple slices than your sister.");
+				}
+				if (sandwichLeft > 1) {
+					EndFeedback.feedback.Add ("You ate less of your sandwich than your sister did.");
+				}
+				if (sandwichLeft < 1) {
+					EndFeedback.feedback.Add ("You ate more of your sandwich than your sister did.");
+				}
 				SceneManager.LoadScene ("badending");
 			}
 		}

@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BadEndingScript : MonoBehaviour {
 
 	float timer;
 	public GameObject red;
-	
-	// Update is called once per frame
+	public Text feedbackText;
+
+	void Start () {
+		feedbackText.text = "";
+		Debug.Log (EndFeedback.feedback.Count);
+	}
+
 	void Update () {
 		timer += Time.deltaTime;
-
 		if (timer > .1f) {
 			red.SetActive (false);
 		}
@@ -44,6 +49,7 @@ public class BadEndingScript : MonoBehaviour {
 		}
 		if (timer > 1.1f) {
 			red.SetActive (false);
+			feedbackText.text = EndFeedback.feedbackString;
 			if (Input.GetKeyDown(KeyCode.Space)) {
 				SceneManager.LoadScene ("Breakfast");
 			}

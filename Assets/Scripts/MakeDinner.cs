@@ -51,6 +51,24 @@ public class MakeDinner : MonoBehaviour {
 				}
 			}
 			else {
+				if (FillMilk.scale.y < FillMilk.milkMin.y) {
+					EndFeedback.feedback.Add ("You poured yourself less milk than your sister had.\n");
+				}
+				if (FillMilk.scale.y > FillMilk.milkMax.y) {
+					EndFeedback.feedback.Add ("You poured yourself too much milk.\n");
+				}
+				if (CauliflowerScript.scale.x < CauliflowerScript.caulMin.x) {
+					EndFeedback.feedback.Add ("You got less cauliflower than your sister did.\n");
+				}
+				if (CauliflowerScript.scale.x > CauliflowerScript.caulMax.x) {
+					EndFeedback.feedback.Add ("You got more cauliflower than your sister did.\n");
+				}
+				if (steakLeft > 2) {
+					EndFeedback.feedback.Add ("You had less steak than your sister.");
+				}
+				if (steakLeft < 2) {
+					EndFeedback.feedback.Add ("You had more steak than your sister.");
+				}
 				SceneManager.LoadScene ("badending");
 			}
 		}
